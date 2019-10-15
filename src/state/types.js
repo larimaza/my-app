@@ -1,0 +1,1 @@
+export const LIGHT_MATCH = 'LIGHT_MATCH';
