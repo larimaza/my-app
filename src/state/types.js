@@ -1,1 +1,1 @@
-export const LIGHT_MATCH = 'LIGHT_MATCH';
+export const SET_MATCH = 'SET_MATCH';

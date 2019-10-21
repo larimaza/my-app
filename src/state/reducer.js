@@ -1,9 +1,13 @@
-import {LIGHT_MATCH} from './types';
+import {SET_MATCH} from './types';
+import initialState from './state';
 
-export default (state, action) => {
+export default (state = initialState, action) => {
   switch (action.type) {
-    case LIGHT_MATCH:
-      return action.payload
+    case SET_MATCH:
+      return {
+        ...state,
+        isMatchLit: action.payload
+      }
 
     default:
       return state

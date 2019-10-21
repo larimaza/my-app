@@ -1,6 +1,6 @@
-import {LIGHT_MATCH} from './types';
+import {SET_MATCH} from './types';
 
-export const lightMatch = (payload) => ({
-  type: LIGHT_MATCH,
+export const setMatch = (payload) => ({
+  type: SET_MATCH,
   payload: payload
 });
