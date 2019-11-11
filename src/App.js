@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Provider, connect} from 'react-redux';
 import './App.css';
+import state from './state';
+import {getMatches} from './state/actions';
 
-function App() {
-  return (
+const MatchDisplayCount = ({matchCount}) => (
+  <p>{matchCount}</p>
+)
+
+const MatchState = connect(state => ({matchCount: state.matchCount}), {getMatches})(MatchDisplayCount)
+
+const App = ({matchCount, getMatches}) => (
+  <Provider store={state}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MatchState/>
+      <button onClick={() => getMatches(5)}>Get matches</button>
     </div>
-  );
-}
+  </Provider>
+)
 
 export default App;
