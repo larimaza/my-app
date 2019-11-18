@@ -1,22 +1,19 @@
-import React from 'react';
-import {Provider, connect} from 'react-redux';
-import './App.css';
-import state from './state';
-import {getMatches} from './state/actions';
+import React from "react";
+import { Provider } from "react-redux";
+import "./App.css";
+import state from "./state";
+import { gameViewContainer, weatherControllerContainer } from "./container";
+import GameView from "./components/GameView";
+import WeatherController from "./components/WeatherController";
 
-const MatchDisplayCount = ({matchCount}) => (
-  <p>{matchCount}</p>
-)
+const SmartGameView = gameViewContainer(GameView);
+const SmartWeatherController = weatherControllerContainer(WeatherController);
 
-const MatchState = connect(state => ({matchCount: state.matchCount}), {getMatches})(MatchDisplayCount)
-
-const App = ({matchCount, getMatches}) => (
+const App = () => (
   <Provider store={state}>
-    <div className="App">
-      <MatchState/>
-      <button onClick={() => getMatches(5)}>Get matches</button>
-    </div>
+    <SmartGameView />
+    <SmartWeatherController />
   </Provider>
-)
+);
 
 export default App;
